@@ -1,33 +1,18 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import './App.css';
+import { Button, Center, Heading, VStack } from '@chakra-ui/react';
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="button" onClick={() => setCount(c => c + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <Center minHeight="100vh">
+      <VStack spacing="4">
+        <Heading>React Hook Form Schema Lab 🔥</Heading>
+        <Button onClick={() => setCount(c => c + 1)} colorScheme="red">
+          Counter {count}
+        </Button>
+      </VStack>
+    </Center>
   );
 }
 
