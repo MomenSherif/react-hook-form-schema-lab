@@ -1,22 +1,11 @@
 import { FormControl, FormLabel, Input } from '@chakra-ui/react';
-import { useController } from 'react-hook-form';
+import { useTextField, UseTextFieldProps } from '../hooks/useTextField';
 
-export type TextFieldProps = {
-  label: string;
-  name: string;
-};
+export type TextFieldProps = UseTextFieldProps;
 
-export default function TextField({ name, label }: TextFieldProps) {
-  const {
-    field: { onBlur, onChange, ref, value },
-    fieldState: { error },
-  } = useController({
-    name,
-    rules: {
-      required: true,
-    },
-    defaultValue: '',
-  });
+export default function TextField(props: TextFieldProps) {
+  const { name, value, error, label, onChange, onBlur, ref } =
+    useTextField(props);
 
   return (
     <FormControl isRequired isInvalid={!!error}>

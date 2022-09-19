@@ -1,21 +1,50 @@
-import { forwardRef } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import type {
+  UseFormProps,
+  FieldValues,
+  SubmitHandler,
+  SubmitErrorHandler,
+} from 'react-hook-form';
 
-export type FormProps = {
-  onSubmit: (data: unknown) => void;
-  children: React.ReactNode;
-} & React.ComponentProps<'form'>;
+type FormProps<TFieldValues extends FieldValues> = {
+  onSubmit: SubmitHandler<TFieldValues>;
+  onError?: SubmitErrorHandler<TFieldValues>;
+  children: ReactNode;
+} & UseFormProps<TFieldValues> &
+  Omit<ComponentProps<'form'>, 'onSubmit' | 'onError' | 'children'>;
 
-export default forwardRef<HTMLFormElement, FormProps>(
-  ({ onSubmit, ...props }, ref) => {
-    const methods = useForm({
-      mode: 'onTouched',
-    });
+export default function Form<TFieldValues extends FieldValues = FieldValues>({
+  onSubmit,
+  onError,
+  mode = 'onTouched',
+  reValidateMode = 'onChange',
+  shouldUnregister = true,
+  shouldFocusError = true,
+  shouldUseNativeValidation = false,
+  criteriaMode = 'firstError',
+  context,
+  defaultValues,
+  delayError,
+  resolver,
+  ...formProps
+}: FormProps<TFieldValues>) {
+  const methods = useForm<TFieldValues>({
+    defaultValues,
+    mode,
+    reValidateMode,
+    criteriaMode,
+    delayError,
+    context,
+    resolver,
+    shouldUnregister,
+    shouldFocusError,
+    shouldUseNativeValidation,
+  });
 
-    return (
-      <FormProvider {...methods}>
-        <form ref={ref} onSubmit={methods.handleSubmit(onSubmit)} {...props} />
-      </FormProvider>
-    );
-  },
-);
+  return (
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit, onError)} {...formProps} />
+    </FormProvider>
+  );
+}
