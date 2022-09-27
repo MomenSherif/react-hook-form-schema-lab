@@ -34,7 +34,31 @@
     "react-hooks/exhaustive-deps": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
-    "react/jsx-key": "error"
+    "react/jsx-key": "error",
+    // Disabled, we only require label to nest input OR use htmlFor
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/b800f40a2a69ad48015ae9226fbe879f946757ed/docs/rules/label-has-associated-control.md
+    "jsx-a11y/label-has-associated-control": [
+      "off",
+      {
+        "labelComponents": [],
+        "labelAttributes": [],
+        "controlComponents": [],
+        "assert": "both",
+        "depth": 25
+      }
+    ],
+    // Require that Labels nest their input or uses htmlFor
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        "components": [],
+        "required": {
+          "some": ["nesting", "id"]
+        },
+        "allowChildren": false
+      }
+    ]
   },
   "overrides": [
     {

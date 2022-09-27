@@ -3,6 +3,7 @@ import CheckBox from './components/Checkbox';
 import CheckboxGroup from './components/CheckboxGroup';
 
 import Form from './components/Form';
+import RadioGroup from './components/RadioGroup';
 import Select from './components/Select';
 import TextField from './components/TextField';
 
@@ -23,13 +24,13 @@ function App() {
           <TextField
             name="firstName"
             label="First name"
-            // validation="required|alpha|minLength:$length"
+            validation="required|alpha|minLength:$length"
           />
           <TextField name="length" label="Length" defaultValue={2} readOnly />
           <TextField
             name="lastName"
             label="Last name"
-            // validation="required|alpha"
+            validation="required|alpha"
             required
           />
           <Select
@@ -37,7 +38,7 @@ function App() {
             label="Country"
             placeholder="Select country"
             required
-            // validation="required"
+            validation="required"
             options={[
               { label: 'Egypt', value: 'EG' },
               { label: 'France', value: 'FR' },
@@ -53,11 +54,20 @@ function App() {
             ]}
             validation="required|minLength:2"
           />
+          <RadioGroup
+            name="gender"
+            label="Gender"
+            options={[
+              { label: 'Male', value: 'male' },
+              { label: 'Female', value: 'female' },
+            ]}
+            validation="required"
+          />
           <CheckBox
             name="terms"
             label="I agree to terms & conditions"
             required
-            // validation="required"
+            validation="required"
           />
           <Button type="submit" w="full" mt="10!" colorScheme="teal">
             Submit

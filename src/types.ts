@@ -1,6 +1,6 @@
 export interface CustomField {
   name: string;
-  label?: string;
+  label: string;
   placeholder?: string;
   validation?: string;
   required?: boolean;
