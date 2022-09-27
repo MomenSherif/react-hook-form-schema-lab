@@ -1,4 +1,5 @@
 import { Button, Center, Heading, VStack } from '@chakra-ui/react';
+import CheckBox from './components/Checkbox';
 
 import Form from './components/Form';
 import Select from './components/Select';
@@ -15,11 +16,7 @@ function App() {
 
   return (
     <Center minHeight="100vh">
-      <Form<FormData>
-        onSubmit={handleSubmit}
-        defaultValues={{ firstName: 'Mama' }}
-        noValidate
-      >
+      <Form<FormData> onSubmit={handleSubmit} noValidate>
         <VStack spacing="4">
           <Heading>React Hook Form Schema Lab 🔥</Heading>
           <TextField
@@ -48,6 +45,11 @@ function App() {
               { label: 'Egypt', value: 'EG' },
               { label: 'France', value: 'FR' },
             ]}
+          />
+          <CheckBox
+            name="terms"
+            label="I agree to terms & conditions"
+            validation="required"
           />
           <Button type="submit" w="full" mt="10!" colorScheme="teal">
             Submit
