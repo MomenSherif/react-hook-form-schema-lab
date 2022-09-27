@@ -1,11 +1,13 @@
 import { Button, Center, Heading, VStack } from '@chakra-ui/react';
 
 import Form from './components/Form';
+import Select from './components/Select';
 import TextField from './components/TextField';
 
 type FormData = {
   firstName: string;
   lastName: string;
+  country: string;
 };
 
 function App() {
@@ -13,11 +15,34 @@ function App() {
 
   return (
     <Center minHeight="100vh">
-      <Form<FormData> onSubmit={handleSubmit}>
+      <Form<FormData> onSubmit={handleSubmit} noValidate>
         <VStack spacing="4">
           <Heading>React Hook Form Schema Lab 🔥</Heading>
-          <TextField name="firstName" label="First name" />
-          <TextField name="lastName" label="Last name" />
+          <TextField
+            name="firstName"
+            label="First name"
+            validation="required|alpha|minLength:$length"
+          />
+          <TextField
+            name="length"
+            label="Length"
+            validation="required|number|min:3"
+          />
+          <TextField
+            name="lastName"
+            label="Last name"
+            validation="required|alpha"
+          />
+          <Select
+            name="country"
+            label="Country"
+            placeholder="Select country"
+            validation="required"
+            options={[
+              { label: 'Egypt', value: 'EG' },
+              { label: 'France', value: 'FR' },
+            ]}
+          />
           <Button type="submit" w="full" mt="10!" colorScheme="teal">
             Submit
           </Button>
