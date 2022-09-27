@@ -9,12 +9,13 @@ import { CustomField } from '../types';
 export type CheckboxProps = Omit<CustomField, 'placeholder'>;
 
 export default function CheckBox(props: CheckboxProps) {
-  const { label, disabled, readOnly } = props;
+  const { label, required, disabled, readOnly } = props;
   const { name, value, error, onChange, onBlur, ref } = useCheckbox(props);
 
   return (
     <FormControl
       isInvalid={!!error}
+      isRequired={required}
       isDisabled={disabled}
       isReadOnly={readOnly}
     >

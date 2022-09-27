@@ -18,11 +18,16 @@ export type SelectProps = {
 } & CustomField;
 
 export default function Select(props: SelectProps) {
-  const { label, placeholder, options } = props;
+  const { label, placeholder, required, options, readOnly, disabled } = props;
   const { name, value, error, onChange, onBlur, ref } = useSelect(props);
 
   return (
-    <FormControl isRequired isInvalid={!!error}>
+    <FormControl
+      isRequired={required}
+      isReadOnly={readOnly}
+      isDisabled={disabled}
+      isInvalid={!!error}
+    >
       <FormLabel _invalid={{ color: 'red' }}>{label}</FormLabel>
       <ChakraSelect
         placeholder={placeholder}

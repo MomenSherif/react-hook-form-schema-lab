@@ -10,12 +10,12 @@ import type { CustomField } from '../types';
 export type TextFieldProps = CustomField;
 
 export default function TextField(props: TextFieldProps) {
-  const { label, placeholder, disabled, readOnly } = props;
+  const { label, placeholder, required, disabled, readOnly } = props;
   const { name, value, error, onChange, onBlur, ref } = useTextField(props);
 
   return (
     <FormControl
-      isRequired
+      isRequired={required}
       isInvalid={!!error}
       isDisabled={disabled}
       isReadOnly={readOnly}
