@@ -9,6 +9,7 @@ export type UseCustomFieldOptions = CustomField;
 export default function useCustomField({
   name,
   validation,
+  defaultValue = '',
 }: UseCustomFieldOptions) {
   const validate = useValidation({ validation });
   useTriggerDepsValidation({ name, validation });
@@ -18,7 +19,7 @@ export default function useCustomField({
     fieldState: { error, isDirty, isTouched },
   } = useController({
     name,
-    defaultValue: '',
+    defaultValue,
     rules: { validate },
   });
 

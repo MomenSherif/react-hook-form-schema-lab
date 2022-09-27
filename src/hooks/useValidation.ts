@@ -10,7 +10,7 @@ const alphaNumericRegExp = /^[\p{L}\p{M}\d]+$/u; // Any character
 type ValidationRules = Record<string, (value: any, ...args: any[]) => boolean>;
 
 const validationFunctions: ValidationRules = {
-  required: value => !!value.trim?.(),
+  required: value => !!value,
   minLength: (value, min) => (value ? value.length >= Number(min) : true),
   maxLength: (value, max) => (value ? value.length <= Number(max) : true),
   alpha: value => (value ? alphaRegExp.test(value) : true),

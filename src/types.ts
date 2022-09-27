@@ -4,4 +4,6 @@ export interface CustomField {
   placeholder?: string;
   validation?: string;
   disabled?: boolean;
+  readOnly?: boolean;
+  defaultValue?: any;
 }

@@ -15,7 +15,11 @@ function App() {
 
   return (
     <Center minHeight="100vh">
-      <Form<FormData> onSubmit={handleSubmit} noValidate>
+      <Form<FormData>
+        onSubmit={handleSubmit}
+        defaultValues={{ firstName: 'Mama' }}
+        noValidate
+      >
         <VStack spacing="4">
           <Heading>React Hook Form Schema Lab 🔥</Heading>
           <TextField
@@ -26,7 +30,9 @@ function App() {
           <TextField
             name="length"
             label="Length"
-            validation="required|number|min:3"
+            validation="required|number"
+            defaultValue={2}
+            readOnly
           />
           <TextField
             name="lastName"
