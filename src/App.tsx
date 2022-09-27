@@ -1,5 +1,6 @@
 import { Button, Center, Heading, VStack } from '@chakra-ui/react';
 import CheckBox from './components/Checkbox';
+import CheckboxGroup from './components/CheckboxGroup';
 
 import Form from './components/Form';
 import Select from './components/Select';
@@ -22,13 +23,13 @@ function App() {
           <TextField
             name="firstName"
             label="First name"
-            validation="required|alpha|minLength:$length"
+            // validation="required|alpha|minLength:$length"
           />
           <TextField name="length" label="Length" defaultValue={2} readOnly />
           <TextField
             name="lastName"
             label="Last name"
-            validation="required|alpha"
+            // validation="required|alpha"
             required
           />
           <Select
@@ -36,17 +37,27 @@ function App() {
             label="Country"
             placeholder="Select country"
             required
-            validation="required"
+            // validation="required"
             options={[
               { label: 'Egypt', value: 'EG' },
               { label: 'France', value: 'FR' },
             ]}
           />
+          <CheckboxGroup
+            name="hobbies"
+            label="Hobbies"
+            options={[
+              { label: 'Football', value: 'football' },
+              { label: 'Basketball', value: 'basketball' },
+              { label: 'Tennis', value: 'tennis', disabled: true },
+            ]}
+            validation="required|minLength:2"
+          />
           <CheckBox
             name="terms"
             label="I agree to terms & conditions"
             required
-            validation="required"
+            // validation="required"
           />
           <Button type="submit" w="full" mt="10!" colorScheme="teal">
             Submit

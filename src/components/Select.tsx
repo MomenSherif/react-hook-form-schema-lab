@@ -8,7 +8,7 @@ import useSelect from '../hooks/useSelect';
 import { CustomField } from '../types';
 
 type Option = {
-  label: string | React.ReactNode;
+  label: React.ReactNode;
   value: any;
   [key: string]: any;
 };
