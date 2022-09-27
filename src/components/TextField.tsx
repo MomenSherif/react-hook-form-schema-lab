@@ -1,11 +1,17 @@
-import { FormControl, FormLabel, Input } from '@chakra-ui/react';
-import { useTextField, UseTextFieldProps } from '../hooks/useTextField';
+import {
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from '@chakra-ui/react';
+import { useTextField } from '../hooks/useTextField';
+import type { CustomField } from '../types';
 
-export type TextFieldProps = UseTextFieldProps;
+export type TextFieldProps = CustomField;
 
 export default function TextField(props: TextFieldProps) {
-  const { name, value, error, label, onChange, onBlur, ref } =
-    useTextField(props);
+  const { label, placeholder } = props;
+  const { name, value, error, onChange, onBlur, ref } = useTextField(props);
 
   return (
     <FormControl isRequired isInvalid={!!error}>
@@ -15,11 +21,12 @@ export default function TextField(props: TextFieldProps) {
       <Input
         ref={ref}
         id={name}
-        required={false} // Remove required props inserted by <FormControl />
         onChange={onChange}
         onBlur={onBlur}
         value={value}
+        placeholder={placeholder}
       />
+      <FormErrorMessage>{JSON.stringify(error, null, 2)}</FormErrorMessage>
     </FormControl>
   );
 }
