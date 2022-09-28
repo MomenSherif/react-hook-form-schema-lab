@@ -38,6 +38,7 @@ function App() {
             label="Country"
             placeholder="Select country"
             required
+            multiple
             validation="required"
             options={[
               { label: 'Egypt', value: 'EG' },
