@@ -21,7 +21,7 @@ export type CheckboxGroupProps = {
 
 export default function CheckBox(props: CheckboxGroupProps) {
   const { label, options, required, disabled, readOnly } = props;
-  const { name, value, error, onChange, ref } = useCheckboxGroup(props);
+  const { name, value, error, onChange, onBlur, ref } = useCheckboxGroup(props);
 
   return (
     <FormControl
@@ -41,6 +41,7 @@ export default function CheckBox(props: CheckboxGroupProps) {
               value={option.value}
               name={name}
               isDisabled={option.disabled}
+              onBlur={onBlur}
             >
               {option.label}
             </CharkaCheckbox>

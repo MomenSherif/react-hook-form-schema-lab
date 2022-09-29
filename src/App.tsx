@@ -24,7 +24,7 @@ function App() {
           <TextField
             name="firstName"
             label="First name"
-            validation="required|alpha|minLength:$length"
+            validation="required|matches:/^[a-z]+$/i"
           />
           <TextField name="length" label="Length" defaultValue={2} readOnly />
           <TextField
