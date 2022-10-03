@@ -1,6 +1,7 @@
 import { Button, Center, Heading, VStack } from '@chakra-ui/react';
 import CheckBox from './components/Checkbox';
 import CheckboxGroup from './components/CheckboxGroup';
+import DatePicker from './components/DatePicker';
 
 import Form from './components/Form';
 import RadioGroup from './components/RadioGroup';
@@ -14,7 +15,8 @@ type FormData = {
 };
 
 function App() {
-  const handleSubmit = (data: FormData) => console.log(data);
+  const handleSubmit = (data: FormData) =>
+    console.log(data, JSON.stringify(data));
 
   return (
     <Center minHeight="100vh">
@@ -44,6 +46,11 @@ function App() {
               { label: 'Egypt', value: 'EG' },
               { label: 'France', value: 'FR' },
             ]}
+          />
+          <DatePicker
+            name="birthday"
+            label="Date of Birth"
+            validation="required|dateBetween:2022/10/10,2022/10/20"
           />
           <CheckboxGroup
             name="hobbies"

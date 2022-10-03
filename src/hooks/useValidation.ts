@@ -36,6 +36,15 @@ const validationFunctions: ValidationRules = {
   max: (value, max) => (value ? Number(value) <= Number(max) : true),
   between: (value, min, max) =>
     value ? Number(value) >= Number(min) && Number(value) <= Number(max) : true,
+  dateAfter: (value, targetDate) =>
+    value ? new Date(value).getTime() > new Date(targetDate).getTime() : true,
+  dateBefore: (value, targetDate) =>
+    value ? new Date(value).getTime() < new Date(targetDate).getTime() : true,
+  dateBetween: (value, minTargetDate, maxTargetDate) =>
+    value
+      ? new Date(value).getTime() >= new Date(minTargetDate).getTime() &&
+        new Date(value).getTime() <= new Date(maxTargetDate).getTime()
+      : true,
 };
 
 type UseValidationOptions = {
