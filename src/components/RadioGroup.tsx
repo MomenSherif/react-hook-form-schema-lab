@@ -7,17 +7,7 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import useRadioGroup from '../hooks/useRadioGroup';
-import { type CustomField } from '../types';
-
-type Option = {
-  label: React.ReactNode;
-  value: any;
-  [key: string]: any;
-};
-
-type RadioGroupProps = {
-  options: Option[];
-} & CustomField;
+import type { RadioGroupProps } from '../types';
 
 export default function RadioGroup(props: RadioGroupProps) {
   const { label, options, required, disabled, readOnly } = props;

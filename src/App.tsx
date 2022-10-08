@@ -2,6 +2,7 @@ import { Button, Center, Heading, VStack } from '@chakra-ui/react';
 import CheckBox from './components/Checkbox';
 import CheckboxGroup from './components/CheckboxGroup';
 import DatePicker from './components/DatePicker';
+import DepSelect from './components/DepSelect';
 
 import Form from './components/Form';
 import RadioGroup from './components/RadioGroup';
@@ -12,6 +13,7 @@ type FormData = {
   firstName: string;
   lastName: string;
   country: string;
+  city: string;
 };
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
       <Form<FormData> onSubmit={handleSubmit} noValidate>
         <VStack spacing="4">
           <Heading>React Hook Form Schema Lab 🔥</Heading>
+
           <TextField
             name="firstName"
             label="First name"
@@ -38,14 +41,27 @@ function App() {
           <Select
             name="country"
             label="Country"
-            placeholder="Select country"
             required
-            multiple
-            validation="required"
             options={[
               { label: 'Egypt', value: 'EG' },
               { label: 'France', value: 'FR' },
             ]}
+            validation="required"
+          />
+          <DepSelect
+            name="city"
+            label="City"
+            dependency="country"
+            required
+            validation="required"
+            optionsMap={{
+              EG: [
+                { label: 'Cairo', value: 'cairo' },
+                { label: 'Alexandria', value: 'alex' },
+              ],
+              FR: [{ label: 'Paris', value: 'paris' }],
+            }}
+            autoFocusOnDepChange
           />
           <DatePicker
             name="birthday"

@@ -5,9 +5,7 @@ import {
   Input,
 } from '@chakra-ui/react';
 import { useTextField } from '../hooks/useTextField';
-import type { CustomField } from '../types';
-
-export type TextFieldProps = CustomField;
+import type { TextFieldProps } from '../types';
 
 export default function TextField(props: TextFieldProps) {
   const { label, placeholder, required, disabled, readOnly } = props;

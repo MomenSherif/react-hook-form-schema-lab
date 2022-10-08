@@ -7,17 +7,7 @@ import {
   FormLabel,
 } from '@chakra-ui/react';
 import useCheckboxGroup from '../hooks/useCheckboxGroup';
-import { CustomField } from '../types';
-
-type Option = {
-  label: React.ReactNode;
-  value: any;
-  [key: string]: any;
-};
-
-export type CheckboxGroupProps = {
-  options: Option[];
-} & Omit<CustomField, 'placeholder'>;
+import type { CheckboxGroupProps } from '../types';
 
 export default function CheckBox(props: CheckboxGroupProps) {
   const { label, options, required, disabled, readOnly } = props;

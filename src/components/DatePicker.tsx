@@ -13,10 +13,8 @@ import 'react-day-picker/dist/style.css';
 
 import { format, formatISO } from 'date-fns';
 
-import { CustomField } from '../types';
+import type { DatePickerProps } from '../types';
 import { useDatePicker } from '../hooks/useDatePicker';
-
-export type DatePickerProps = CustomField;
 
 export default function DatePicker(props: DatePickerProps) {
   const { required, disabled, readOnly, label } = props;

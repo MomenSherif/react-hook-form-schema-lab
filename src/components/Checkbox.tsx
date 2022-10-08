@@ -4,9 +4,7 @@ import {
   Checkbox as CharkaCheckbox,
 } from '@chakra-ui/react';
 import useCheckbox from '../hooks/useCheckbox';
-import { CustomField } from '../types';
-
-export type CheckboxProps = Omit<CustomField, 'placeholder'>;
+import type { CheckboxProps } from '../types';
 
 export default function CheckBox(props: CheckboxProps) {
   const { label, required, disabled, readOnly } = props;
